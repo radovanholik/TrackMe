@@ -1,2 +1,4 @@
+include ':domain'
+include ':model'
 include ':app'
 rootProject.name = "Track Me"
