@@ -1,7 +1,7 @@
 package cz.radovanholik.moviesviewer.ui.list
 
 import cz.radovanholik.moviesviewer.common.core.BaseViewModel
-import cz.radovanholik.moviesviewer.common.core.State
+import cz.radovanholik.moviesviewer.common.core.ViewState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
@@ -30,7 +30,7 @@ class MoviesViewModel(
     data class MoviesState(
         val isLoading: Boolean = false,
         val count: Int = 0
-    ) : State
+    ) : ViewState
     
     sealed class Command {
         class Smth(val counter: String): Command()

@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-abstract class BaseViewModel<STATE : State, COMMAND : Any>(
+abstract class BaseViewModel<STATE : ViewState, COMMAND : Any>(
     initialState: STATE,
     defaultDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : CoreViewModel(defaultDispatcher = defaultDispatcher) {

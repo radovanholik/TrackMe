@@ -5,7 +5,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
-abstract class BaseFragment<STATE: State, COMMAND: Any>: Fragment(), ViewRenderer<STATE, COMMAND> {
+abstract class BaseFragment<STATE: ViewState, COMMAND: Any>: Fragment(), ViewRenderer<STATE, COMMAND> {
 
     /**
      * Represents main view model associated with the fragment view state

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 
-abstract class ViewBindingFragment<VB: ViewBinding, S: State, Command: Any>: BaseFragment<S, Command>() {
+abstract class ViewBindingFragment<VB: ViewBinding, S: ViewState, Command: Any>: BaseFragment<S, Command>() {
 
     private var _binding: ViewBinding? = null
     abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> VB
