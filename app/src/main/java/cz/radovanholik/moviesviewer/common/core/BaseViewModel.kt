@@ -16,9 +16,10 @@ abstract class BaseViewModel<STATE : State, COMMAND : Any>(
     private val TAG: String = this.javaClass.simpleName
 
     private val _stateFlow = MutableStateFlow(initialState)
-    val stateFlow: Flow<STATE> = _stateFlow
+    val stateFlow: Flow<STATE> = _stateFlow.asStateFlow()
 
-    val commandChannel = Channel<COMMAND>(Channel.UNLIMITED)
+    private val _commandFlow = MutableSharedFlow<COMMAND>()
+    val commandFlow: Flow<COMMAND> = _commandFlow.asSharedFlow()
 
     /**
      * A channel to handle incoming events from UI.
@@ -46,7 +47,7 @@ abstract class BaseViewModel<STATE : State, COMMAND : Any>(
      */
     protected fun sendCommand(command: COMMAND) {
         Timber.tag(TAG).i("Sending command: $command")
-        viewModelScope.launch { commandChannel.send(command) }
+        viewModelScope.launch { _commandFlow.emit(command) }
     }
 
     /**
